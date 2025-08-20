@@ -197,7 +197,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Developer
 
-Built with ❤️ by [Your Name]
+Built with ❤️ by Sadman Sakib
 
 
 
@@ -206,7 +206,7 @@ Built with ❤️ by [Your Name]
 If you encounter any issues or have questions:
 1. Check the existing issues on GitHub
 2. Create a new issue with detailed description
-3. Contact: your.email@example.com
+3. Contact: sakibsadman928@gmail.com
 
 ---
 
