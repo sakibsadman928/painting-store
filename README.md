@@ -51,7 +51,7 @@ A full-stack painting gallery e-commerce platform built with React.js and Node.j
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/painting-store.git
+git clone https://github.com/sakibsadman928/painting-store.git
 cd painting-store
 ```
 
