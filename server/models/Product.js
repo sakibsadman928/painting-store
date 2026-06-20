@@ -26,6 +26,10 @@ const productSchema = new mongoose.Schema({
         required: true,
         default: 0
     },
+    cartitems: {
+        type: Object,
+        default: {}
+    },
     rating: {
         type: Number,
         default: 0,

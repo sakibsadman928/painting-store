@@ -29,7 +29,11 @@ const ticketSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
+    paymentStatus: {
+        type: String,
+        enum: ['pending', 'completed', 'failed', 'refunded'],
+        default: 'completed'
+    },
     ticketStatus: {
         type: String,
         enum: ['active', 'used', 'cancelled'],

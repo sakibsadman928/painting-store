@@ -85,6 +85,18 @@ const updateStatus = async (req, res) => {
     }
 }
 
+const updatePayment = async (req, res) => {
+    try {
+        const { orderId, payment } = req.body;
+
+        await Order.findByIdAndUpdate(orderId, { payment });
+        res.json({ success: true, message: "Payment Status Updated" });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
 
 const getSingleOrder = async (req, res) => {
     try {
@@ -103,4 +115,4 @@ const getSingleOrder = async (req, res) => {
     }
 }
 
-export { placeOrder, getUserOrders, getAllOrders, updateStatus, getSingleOrder };
+export { placeOrder, getUserOrders, getAllOrders, updateStatus, updatePayment, getSingleOrder };
