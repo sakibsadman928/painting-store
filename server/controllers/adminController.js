@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import fs from "fs";
 
 const adminLogin = async (req, res) => {
+  console.log("ENV:", process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
   try {
     const { email, password } = req.body;
 
