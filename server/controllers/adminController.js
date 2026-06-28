@@ -10,8 +10,8 @@ const adminLogin = async (req, res) => {
     const { email, password } = req.body;
 
     const adminCredentials = {
-      email: "admin@paletteplay.com",
-      password: "admin123",
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PASSWORD,
     };
 
     if (
