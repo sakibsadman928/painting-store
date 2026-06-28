@@ -27,7 +27,7 @@ const adminLogin = async (req, res) => {
       { expiresIn: "7d" },
     );
 
-    res.cookie("token", token, {
+    res.cookie("admin_token", token, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
