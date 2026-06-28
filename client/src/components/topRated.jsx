@@ -15,7 +15,7 @@ const TopRated = () => {
       setLoading(true);
       setError("");
 
-      const response = await fetch("${API_URL}/api/product/top-rated?limit=4");
+      const response = await fetch(`${API_URL}/api/product/top-rated?limit=4`);
       const data = await response.json();
 
       if (data.success) {

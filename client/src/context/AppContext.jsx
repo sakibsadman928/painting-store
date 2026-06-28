@@ -16,7 +16,7 @@ export const AppContextProvider = ({ children }) => {
 
   const checkUserAuth = async () => {
     try {
-      const response = await fetch("${API_URL}/api/user/profile", {
+      const response = await fetch(`${API_URL}/api/user/profile`, {
         credentials: "include",
       });
       const data = await response.json();
@@ -45,7 +45,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchCartCount = async () => {
     if (user) {
       try {
-        const response = await fetch("${API_URL}/api/cart/count", {
+        const response = await fetch(`${API_URL}/api/cart/count`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -63,7 +63,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchCartItems = async () => {
     if (user) {
       try {
-        const response = await fetch("${API_URL}/api/cart/get", {
+        const response = await fetch(`${API_URL}/api/cart/get`, {
           method: "POST",
           credentials: "include",
         });
@@ -86,7 +86,7 @@ export const AppContextProvider = ({ children }) => {
     }
 
     try {
-      const response = await fetch("${API_URL}/api/cart/add", {
+      const response = await fetch(`${API_URL}/api/cart/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ export const AppContextProvider = ({ children }) => {
 
   const updateCartItem = async (itemId, quantity) => {
     try {
-      const response = await fetch("${API_URL}/api/cart/update", {
+      const response = await fetch(`${API_URL}/api/cart/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,7 +134,7 @@ export const AppContextProvider = ({ children }) => {
 
   const removeFromCart = async (itemId) => {
     try {
-      const response = await fetch("${API_URL}/api/cart/remove", {
+      const response = await fetch(`${API_URL}/api/cart/remove`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -158,7 +158,7 @@ export const AppContextProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      const response = await fetch("${API_URL}/api/cart/clear", {
+      const response = await fetch(`${API_URL}/api/cart/clear`, {
         method: "POST",
         credentials: "include",
       });
@@ -178,7 +178,7 @@ export const AppContextProvider = ({ children }) => {
 
   const adminLogout = async () => {
     try {
-      await fetch("${API_URL}/api/admin/logout", {
+      await fetch(`${API_URL}/api/admin/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -193,7 +193,7 @@ export const AppContextProvider = ({ children }) => {
 
   const userLogout = async () => {
     try {
-      await fetch("${API_URL}/api/user/logout", {
+      await fetch(`${API_URL}/api/user/logout`, {
         method: "POST",
         credentials: "include",
       });

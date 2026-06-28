@@ -25,7 +25,7 @@ const Address = () => {
   const fetchAddresses = async () => {
     try {
       setLoading(true);
-      const response = await fetch("${API_URL}/api/address/list", {
+      const response = await fetch(`${API_URL}/api/address/list`, {
         credentials: "include",
       });
       const data = await response.json();
@@ -42,7 +42,7 @@ const Address = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("${API_URL}/api/address/add", {
+      const response = await fetch(`${API_URL}/api/address/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const Address = () => {
     if (!confirm("Are you sure you want to delete this address?")) return;
 
     try {
-      const response = await fetch("${API_URL}/api/address/delete", {
+      const response = await fetch(`${API_URL}/api/address/delete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Address = () => {
 
   const setDefault = async (addressId) => {
     try {
-      const response = await fetch("${API_URL}/api/address/default", {
+      const response = await fetch(`${API_URL}/api/address/default`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

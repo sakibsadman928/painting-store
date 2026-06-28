@@ -10,7 +10,7 @@ const Login = () => {
   const { setShowUserLogin, setUser, setAdmin, navigate } = useAppContext();
 
   const handleAdminLogin = async (email, password) => {
-    const response = await fetch("${API_URL}/api/admin/login", {
+    const response = await fetch(`${API_URL}/api/admin/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

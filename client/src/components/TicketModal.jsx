@@ -38,7 +38,7 @@ const TicketModal = ({ exhibition, onClose }) => {
     try {
       setLoading(true);
 
-      const response = await fetch("${API_URL}/api/exhibition/purchase", {
+      const response = await fetch(`${API_URL}/api/exhibition/purchase`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

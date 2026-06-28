@@ -43,7 +43,7 @@ const Cart = () => {
       }
 
       const promises = productIds.map(async (productId) => {
-        const response = await fetch("${API_URL}/api/product/single", {
+        const response = await fetch(`${API_URL}/api/product/single`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const Cart = () => {
 
   const fetchAddresses = async () => {
     try {
-      const response = await fetch("${API_URL}/api/address/list", {
+      const response = await fetch(`${API_URL}/api/address/list`, {
         credentials: "include",
       });
       const data = await response.json();
@@ -137,7 +137,7 @@ const Cart = () => {
     };
 
     try {
-      const response = await fetch("${API_URL}/api/order/place", {
+      const response = await fetch(`${API_URL}/api/order/place`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
