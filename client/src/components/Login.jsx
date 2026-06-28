@@ -10,7 +10,7 @@ const Login = () => {
   const { setShowUserLogin, setUser, setAdmin, navigate } = useAppContext();
 
   const handleAdminLogin = async (email, password) => {
-    const response = await fetch("http://localhost:4000/api/admin/login", {
+    const response = await fetch("${API_URL}/api/admin/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const Login = () => {
   };
 
   const handleUserLogin = async (email, password) => {
-    const response = await fetch("http://localhost:4000/api/user/login", {
+    const response = await fetch(`${API_URL}/api/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   const handleUserRegister = async (name, email, password) => {
-    const response = await fetch("http://localhost:4000/api/user/register", {
+    const response = await fetch(`${API_URL}/api/user/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -183,7 +183,7 @@ const Login = () => {
           </p>
         )}
         <a
-          href="http://localhost:4000/api/user/auth/google"
+          href={`${API_URL}/api/user/auth/google`}
           className="flex items-center justify-center gap-3 w-full py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition mb-2"
         >
           <svg width="18" height="18" viewBox="0 0 48 48">

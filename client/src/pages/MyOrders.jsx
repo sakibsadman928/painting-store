@@ -141,16 +141,13 @@ const MyOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/order/userorders",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
+      const response = await fetch(`${API_URL}/api/order/userorders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        credentials: "include",
+      });
 
       const data = await response.json();
       if (data.success) {
@@ -165,12 +162,9 @@ const MyOrders = () => {
   const fetchTickets = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        "http://localhost:4000/api/exhibition/tickets",
-        {
-          credentials: "include",
-        },
-      );
+      const response = await fetch(`${API_URL}/api/exhibition/tickets`, {
+        credentials: "include",
+      });
 
       const data = await response.json();
       if (data.success) {
@@ -193,7 +187,7 @@ const MyOrders = () => {
     setExistingRating(null);
 
     try {
-      const response = await fetch("http://localhost:4000/api/rating/user", {
+      const response = await fetch(`${API_URL}/api/rating/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -232,7 +226,7 @@ const MyOrders = () => {
     setSubmittingRating(true);
 
     try {
-      const response = await fetch("http://localhost:4000/api/rating/add", {
+      const response = await fetch(`${API_URL}/api/rating/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -378,7 +372,7 @@ const MyOrders = () => {
                             </span>
                           ) : item.image ? (
                             <img
-                              src={`http://localhost:4000/images/${item.image}`}
+                              src={`${API_URL}/images/${item.image}`}
                               alt={item.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {

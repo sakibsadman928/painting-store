@@ -29,7 +29,10 @@ userRouter.get(
 userRouter.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:5173",
+    failureRedirect:
+      process.env.NODE_ENV === "production"
+        ? "https://painting-store-ten.vercel.app"
+        : "http://localhost:5173",
     session: false,
   }),
   googleCallback,

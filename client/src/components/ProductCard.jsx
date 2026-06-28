@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
 
   const getImageUrl = () => {
     if (product.image && product.image.length > 0) {
-      return `http://localhost:4000/images/${product.image[0]}`;
+      return `${API_URL}/images/${product.image[0]}`;
     }
     return "/placeholder-image.jpg";
   };

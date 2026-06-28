@@ -38,7 +38,7 @@ const AdminDashboard = () => {
 
   const checkAuthAndFetchData = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/admin/status", {
+      const response = await fetch("${API_URL}/api/admin/status", {
         credentials: "include",
       });
       const data = await response.json();
@@ -99,24 +99,22 @@ const AdminDashboard = () => {
   };
 
   const fetchProducts = async () => {
-    const data = await apiCall(
-      "http://localhost:4000/api/product/list?limit=100",
-    );
+    const data = await apiCall("${API_URL}/api/product/list?limit=100");
     if (data && data.success) setProducts(data.products);
   };
 
   const fetchOrders = async () => {
-    const data = await apiCall("http://localhost:4000/api/order/list");
+    const data = await apiCall("${API_URL}/api/order/list");
     if (data && data.success) setOrders(data.orders);
   };
 
   const fetchExhibitions = async () => {
-    const data = await apiCall("http://localhost:4000/api/exhibition/list");
+    const data = await apiCall("${API_URL}/api/exhibition/list");
     if (data && data.success) setExhibitions(data.exhibitions);
   };
 
   const fetchTickets = async () => {
-    const data = await apiCall("http://localhost:4000/api/admin/tickets");
+    const data = await apiCall("${API_URL}/api/admin/tickets");
     if (data && data.success) {
       setTickets(data.tickets);
     } else {
@@ -126,15 +124,13 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const productData = await apiCall(
-        "http://localhost:4000/api/admin/stats/products",
-      );
+      const productData = await apiCall("${API_URL}/api/admin/stats/products");
       if (productData && productData.success) {
         setProductStats(productData.stats);
       }
 
       const exhibitionData = await apiCall(
-        "http://localhost:4000/api/admin/stats/exhibitions",
+        "${API_URL}/api/admin/stats/exhibitions",
       );
       if (exhibitionData && exhibitionData.success) {
         setExhibitionStats(exhibitionData.stats);
@@ -169,7 +165,7 @@ const AdminDashboard = () => {
 
   const adminLogout = async () => {
     try {
-      await fetch("http://localhost:4000/api/admin/logout", {
+      await fetch("${API_URL}/api/admin/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -208,7 +204,7 @@ const AdminDashboard = () => {
         if (images[key]) formDataToSend.append(key, images[key]);
       });
 
-      const data = await apiCall("http://localhost:4000/api/product/add", {
+      const data = await apiCall("${API_URL}/api/product/add", {
         method: "POST",
         body: formDataToSend,
       });
@@ -351,7 +347,7 @@ const AdminDashboard = () => {
         if (images[key]) formDataToSend.append(key, images[key]);
       });
 
-      const data = await apiCall("http://localhost:4000/api/product/update", {
+      const data = await apiCall("${API_URL}/api/product/update", {
         method: "PUT",
         body: formDataToSend,
       });
@@ -517,7 +513,7 @@ const AdminDashboard = () => {
       );
       if (image) formDataToSend.append("image", image);
 
-      const data = await apiCall("http://localhost:4000/api/exhibition/add", {
+      const data = await apiCall("${API_URL}/api/exhibition/add", {
         method: "POST",
         body: formDataToSend,
       });
@@ -671,13 +667,10 @@ const AdminDashboard = () => {
       );
       if (image) formDataToSend.append("image", image);
 
-      const data = await apiCall(
-        "http://localhost:4000/api/exhibition/update",
-        {
-          method: "PUT",
-          body: formDataToSend,
-        },
-      );
+      const data = await apiCall("${API_URL}/api/exhibition/update", {
+        method: "PUT",
+        body: formDataToSend,
+      });
 
       if (data && data.success) {
         alert("Exhibition updated successfully!");
@@ -991,7 +984,7 @@ const AdminDashboard = () => {
                           <img
                             src={
                               item.image?.[0]
-                                ? `http://localhost:4000/images/${item.image[0]}`
+                                ? `${API_URL}/images/${item.image[0]}`
                                 : "/placeholder-image.jpg"
                             }
                             alt={item.name}
@@ -1029,7 +1022,7 @@ const AdminDashboard = () => {
                           onClick={() =>
                             handleDelete(
                               item._id,
-                              "http://localhost:4000/api/product/remove",
+                              "${API_URL}/api/product/remove",
                             )
                           }
                           className="text-red-600 hover:text-red-900"
@@ -1059,7 +1052,7 @@ const AdminDashboard = () => {
                             handleStatusUpdate(
                               item._id,
                               e.target.value,
-                              "http://localhost:4000/api/order/status",
+                              "${API_URL}/api/order/status",
                             )
                           }
                           disabled={item.status === "Shipped"}
@@ -1079,7 +1072,7 @@ const AdminDashboard = () => {
                           <img
                             src={
                               item.image
-                                ? `http://localhost:4000/images/${item.image}`
+                                ? `${API_URL}/images/${item.image}`
                                 : "/placeholder-exhibition.jpg"
                             }
                             alt={item.title}
@@ -1112,7 +1105,7 @@ const AdminDashboard = () => {
                           onClick={() =>
                             handleDelete(
                               item._id,
-                              "http://localhost:4000/api/admin/exhibition/delete",
+                              "${API_URL}/api/admin/exhibition/delete",
                             )
                           }
                           className="text-red-600 hover:text-red-900"

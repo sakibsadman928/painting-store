@@ -27,8 +27,8 @@ const register = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -74,8 +74,8 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -108,6 +108,7 @@ const logout = async (req, res) => {
   }
 };
 
+// Did not understand
 const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password");
@@ -119,7 +120,7 @@ const getProfile = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
+// Did not understand
 const updateProfile = async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -149,15 +150,23 @@ const googleCallback = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
 
-    res.redirect("http://localhost:5173");
+    res.redirect(
+      process.env.NODE_ENV === "production"
+        ? "https://painting-store-ten.vercel.app"
+        : "http://localhost:5173",
+    );
   } catch (error) {
-    res.redirect("http://localhost:5173");
+    res.redirect(
+      process.env.NODE_ENV === "production"
+        ? "https://painting-store-ten.vercel.app"
+        : "http://localhost:5173",
+    );
   }
 };
 

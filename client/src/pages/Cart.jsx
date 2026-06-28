@@ -43,16 +43,13 @@ const Cart = () => {
       }
 
       const promises = productIds.map(async (productId) => {
-        const response = await fetch(
-          "http://localhost:4000/api/product/single",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ productId }),
+        const response = await fetch("${API_URL}/api/product/single", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
+          body: JSON.stringify({ productId }),
+        });
         const data = await response.json();
         if (data.success) {
           return {
@@ -74,7 +71,7 @@ const Cart = () => {
 
   const fetchAddresses = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/address/list", {
+      const response = await fetch("${API_URL}/api/address/list", {
         credentials: "include",
       });
       const data = await response.json();
@@ -140,7 +137,7 @@ const Cart = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:4000/api/order/place", {
+      const response = await fetch("${API_URL}/api/order/place", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -234,7 +231,7 @@ const Cart = () => {
               >
                 <img
                   className="max-w-full h-full object-cover"
-                  src={`http://localhost:4000/images/${product.image[0]}`}
+                  src={`${API_URL}/images/${product.image[0]}`}
                   alt={product.name}
                   onError={(e) => {
                     e.target.src = "/placeholder-image.jpg";

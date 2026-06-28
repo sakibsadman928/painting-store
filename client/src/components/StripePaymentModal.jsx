@@ -32,7 +32,7 @@ const CheckoutForm = ({ onSuccess, onCancel }) => {
     const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:5173/myOrders",
+        return_url: `${API_URL}/myOrders`,
       },
       redirect: "if_required",
     });
@@ -77,15 +77,12 @@ const StripePaymentModal = ({ amount, onSuccess, onCancel }) => {
   useEffect(() => {
     const createIntent = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/payment/create-intent",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({ amount }),
-          },
-        );
+        const response = await fetch(`${API_URL}/api/payment/create-intent`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ amount }),
+        });
         const data = await response.json();
         if (data.success) {
           setClientSecret(data.clientSecret);

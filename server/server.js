@@ -31,10 +31,8 @@ console.log("Starting server...");
 await connectDB();
 
 const allowedOrigins = [
-  "http://localhost:3000",
   "http://localhost:5173",
-  "http://localhost:5174",
-  "https://yourdomain.com",
+  "https://painting-store-ten.vercel.app",
 ];
 
 app.use(express.json({ limit: "50mb" }));

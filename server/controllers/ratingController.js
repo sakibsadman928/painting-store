@@ -29,6 +29,7 @@ const addRating = async (req, res) => {
       status: "Shipped",
     });
 
+    //Did not understand
     const hasPurchased = userOrders.some((order) =>
       order.items.some((item) => item.productId === productId),
     );
@@ -39,7 +40,7 @@ const addRating = async (req, res) => {
         message: "You can only rate products you have purchased and received",
       });
     }
-
+    //Did not understand
     const existingRatingIndex = product.ratings.findIndex(
       (r) => r.userId.toString() === req.userId,
     );
@@ -81,6 +82,7 @@ const addRating = async (req, res) => {
   }
 };
 
+//Eikhane asi
 const getProductRatings = async (req, res) => {
   try {
     const { productId } = req.body;
