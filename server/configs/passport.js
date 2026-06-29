@@ -15,6 +15,7 @@ passport.use(
         process.env.NODE_ENV === "production"
           ? "https://painting-store-zdze.onrender.com/api/user/auth/google/callback"
           : "http://localhost:4000/api/user/auth/google/callback",
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
