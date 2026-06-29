@@ -82,7 +82,6 @@ const addRating = async (req, res) => {
   }
 };
 
-//Eikhane asi
 const getProductRatings = async (req, res) => {
   try {
     const { productId } = req.body;
@@ -99,6 +98,7 @@ const getProductRatings = async (req, res) => {
 
     // UPDATED: Sort those specific 20 reviews so the absolute newest is at the top
     const sortedLatestRatings = product.ratings.sort(
+      //Did not understand
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     );
 
