@@ -148,10 +148,11 @@ const googleCallback = async (req, res) => {
       expiresIn: "7d",
     });
 
+    // Hardcoded to ensure cross-origin cookies are always allowed
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: true, // Required for sameSite: "none"
+      sameSite: "none", // Allows Vercel frontend to receive cookies from Render backend
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -162,6 +163,7 @@ const googleCallback = async (req, res) => {
         : "http://localhost:5173",
     );
   } catch (error) {
+    console.error("Google authentication error:", error);
     res.redirect(
       process.env.NODE_ENV === "production"
         ? "https://painting-store-ten.vercel.app"
